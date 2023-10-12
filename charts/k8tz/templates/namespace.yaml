@@ -1,0 +1,9 @@
+{{- if .Values.namespace }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ ( include "k8tz.namespace" . ) }}
+  labels:
+    k8tz.io/controller-namespace: "true"
+    {{- include "k8tz.labels" . | nindent 4 }}
+{{- end }}
